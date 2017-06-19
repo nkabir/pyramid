@@ -9,6 +9,7 @@ from pyramid.view import (
 class HelloWorldViews:
     def __init__(self, request):
         self.request = request
+        
         # Our templates can now say {{ view.name }}
         self.name = request.matchdict['name']
 
@@ -28,3 +29,8 @@ class HelloWorldViews:
     def delete_view(self):
         print('Deleted')
         return dict()
+
+    @view_config(request_param='form.other', renderer='json')
+    def other_view(self):
+        return dict()
+
